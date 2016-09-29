@@ -37,6 +37,8 @@ export default class FileSystemLoader {
         rootRelativePath = path.resolve( relativeDir, newPath ),
         fileRelativePath = path.resolve( path.join( this.root, relativeDir ), newPath )
 
+        fileRelativePath = fileRelativePath.replace(/^([A-z]):\\\1:\\/, '$1:\\');
+
       // if the path is not relative or absolute, try to resolve it in node_modules
       if (newPath[0] !== '.' && newPath[0] !== '/') {
         try {
